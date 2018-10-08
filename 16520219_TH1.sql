@@ -18,6 +18,9 @@ GO
 --2.1.c
 create proc USP_c
 @ten Nvarchar(100)
+as
+begin
+	print 'Xin chao ' + @ten
 end
 exec USP_c @ten=N'Ha Thanh Doan'
 GO
@@ -717,7 +720,7 @@ GO
 EXEC USP_u
 GO
 ---	BAI 4----
---4.1.Xem thï¿½ng tin ??c gi? 
+--4.1.Xem thông tin ??c gi? 
 CREATE PROC sp_ThongTinDocGia
 @madocgia int 
 AS
@@ -734,7 +737,7 @@ END
 GO
 EXEC dbo.sp_ThongTinDocGia @madocgia = 4 -- int
 GO
---4.2. Thï¿½ng tin ??u sï¿½ch 
+--4.2. Thông tin ??u sách 
 CREATE PROC sp_ThongTinDauSach
 @madausach INT
 AS
@@ -746,7 +749,7 @@ END
 GO
 EXEC dbo.sp_ThongTinDauSach @madausach = 1 -- int
 GO
---4.3. Li?t kï¿½ nh?ng ??c gi? ng??i l?n ?ang m??n sï¿½ch 
+--4.3. Li?t kê nh?ng ??c gi? ng??i l?n ?ang m??n sách 
 CREATE PROC sp_ThongTinNguoiLonDangMuon
 AS
 BEGIN
@@ -756,7 +759,7 @@ END
 GO
 EXEC dbo.sp_ThongTinNguoiLonDangMuon
 GO
---4.4. Li?t kï¿½ nh?ng ??c gi? ng??i l?n ?ang m??n sï¿½ch quï¿½ h?n 
+--4.4. Li?t kê nh?ng ??c gi? ng??i l?n ?ang m??n sách quá h?n 
 CREATE PROC sp_ThongTinNguoiLonQuaHan
 AS
 BEGIN
@@ -767,7 +770,7 @@ END
 GO
 EXEC dbo.sp_ThongTinNguoiLonQuaHan
 GO
---4.5. Li?t kï¿½ nh?ng ??c gi? ng??i l?n ?ang m??n sï¿½ch cï¿½ tr? em c?ng ?ang m??n sï¿½ch 
+--4.5. Li?t kê nh?ng ??c gi? ng??i l?n ?ang m??n sách có tr? em c?ng ?ang m??n sách 
 CREATE PROC sp_DocGiaCoTreEmMuon
 AS
 BEGIN
@@ -780,7 +783,7 @@ GO
 EXEC dbo.sp_DocGiaCoTreEmMuon
 GO
 
---4.6. C?p nh?t tr?ng thï¿½i c?a ??u sï¿½c
+--4.6. C?p nh?t tr?ng thái c?a ??u sác
 CREATE PROC sp_CapNhatTrangThaiDauSach
 AS
 BEGIN 
@@ -792,7 +795,7 @@ END
 GO
 EXEC dbo.sp_CapNhatTrangThaiDauSach
 GO
---4.11. Xï¿½a ??c gi? .
+--4.11. Xóa ??c gi? .
 CREATE PROC sp_XoaDocGia
 @madocgia INT  
 AS
@@ -915,7 +918,7 @@ GO
 
 EXEC dbo.sp_ @madocgia = 4 -- int
 GO
---Bï¿½i t?p trigger
+--Bài t?p trigger
 --5.1. tg_delMuon 
 CREATE TRIGGER UTG_1
 ON dbo.MUON
