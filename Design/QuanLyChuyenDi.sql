@@ -1,0 +1,109 @@
+USE QuanLyDaNgoai
+SET DATEFORMAT DMY
+
+
+CREATE TABLE HocSinh
+(
+	MaHS INT PRIMARY KEY IDENTITY,
+	TenHS NVARCHAR(50),
+	NgaySinh SMALLDATETIME,
+	DiaChi NVARCHAR(50),
+	TenCha NVARCHAR(50),
+	TenMe NVARCHAR(50),
+	TenNguoiDamHo NVARCHAR(50),
+	SDT NVARCHAR(11),
+
+)
+
+CREATE TABLE LopHoc(
+	MaLop int PRIMARY KEY,
+	TenLop NVARCHAR(20),
+)
+
+CREATE TABLE NamHoc(
+	MaNH INT PRIMARY KEY,
+	TenNH NVARCHAR(20)
+)
+CREATE TABLE CTLop
+(
+	MaHS INT FOREIGN KEY REFERENCES dbo.HocSinh(MaHS),
+	MaLop INT FOREIGN KEY REFERENCES dbo.LopHoc(MaLop), 
+	MaNH INT FOREIGN KEY REFERENCES dbo.NamHoc(MaNH)
+	CONSTRAINT pk_CTLop PRIMARY KEY(MaHS,MaLop,MaNH)
+)
+
+CREATE TABLE GiaoVien(
+	MaGV INT PRIMARY KEY IDENTITY,
+	TenGV NVARCHAR(50),
+	NgaySinh SMALLDATETIME,
+	DiaChi NVARCHAR(50),
+	SDT NVARCHAR(11),
+	CMND NVARCHAR(12),
+	MaLop INT FOREIGN KEY REFERENCES dbo.LopHoc(MaLop)
+)
+
+CREATE TABLE CongTyDuLich(
+	MaCongTy INT PRIMARY KEY IDENTITY,
+	TenCongTy NVARCHAR(50) NOT NULL,
+	DiaChi NVARCHAR(50),
+	SDT NVARCHAR(11)
+)
+
+CREATE TABLE DiaDiem
+(
+-- dia diem 
+	MaDiaDiem INT PRIMARY KEY IDENTITY,
+	TenDiaDiem NVARCHAR(50),
+	DiaChi NVARCHAR(50),
+)
+
+CREATE TABLE ChuyenDi
+(
+	MaChuyenDi  INT PRIMARY KEY IDENTITY,
+	MaCongTyDuLich INT FOREIGN KEY REFERENCES dbo.CongTyDuLich(MaCongTy),
+	MaDiaDiem INT FOREIGN KEY REFERENCES dbo.DiaDiem(MaDiaDiem),
+	GioKhoiHanh TIME,
+	GioKetThuc TIME,
+
+)
+
+CREATE TABLE ChiTietChuyenDi(
+	MaChuyenDi INT FOREIGN KEY REFERENCES dbo.ChuyenDi(MaChuyenDi),
+	ThoiGian time(5),
+	HoatDong nvarchar(255),
+	GhiChu nvarchar(255)
+)
+
+
+CREATE TABLE ChiPhi
+(
+	MaDiaDiem INT FOREIGN KEY REFERENCES dbo.DiaDiem(MaDiaDiem),
+	MaChuyenDi INT FOREIGN KEY REFERENCES dbo.ChuyenDi(MaChuyenDi),
+	VeCong FLOAT,
+	TienXe FLOAT,
+	TienAnTrua FLOAT,
+	PhiHuongDanVien FLOAT,
+	NuocUong FLOAT,
+	TienAnXe FLOAT,
+	LinhTinh float,
+	GhiChu NVARCHAR(255)
+	CONSTRAINT pk_ChiPhi PRIMARY KEY (MaDiaDiem,MaChuyenDi)
+)
+
+CREATE TABLE HopDong
+(
+	MaHopDong INT PRIMARY KEY IDENTITY,
+	MaChuyenDi INT FOREIGN KEY REFERENCES dbo.ChuyenDi(MaChuyenDi),
+	MaCongTy INT FOREIGN KEY REFERENCES dbo.CongTyDuLich(MaCongTy),
+	TriGia FLOAT
+)
+DROP TABLE HopDong
+CREATE TABLE ThongTinThanhToan
+(
+	MaHopDong INT FOREIGN KEY REFERENCES dbo.HopDong(MaHopDong),
+	LanThanhToan INT,
+	NgayThanhToan SMALLDATETIME,
+	CONSTRAINT pk_ThongTinThanhToan PRIMARY KEY (MaHopDong,LanThanhToan)
+)
+
+
