@@ -86,7 +86,7 @@ BEGIN
 END
 
 
-EXEC Caub 2, 2018
+EXEC Caub 3, 2018
 
 --- cau c
 CREATE PROC Cauc @madt int, @thang int, @nam int 
