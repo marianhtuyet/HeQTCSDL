@@ -1,0 +1,5 @@
+.backGround{
+    -fx-background-image: url("../image/sky.jpg");
+    -fx-background-size: 100% 100%; 
+}
+    
