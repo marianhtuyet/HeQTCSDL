@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="632.0" prefWidth="1033.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="632.0" prefWidth="1033.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quanlychuyendichoi.DiaDiemController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-1.0" prefHeight="140.0" prefWidth="1033.0" text="QUẢN LÝ ĐỊA ĐIỂM" textAlignment="CENTER" />
       <ScrollPane layoutX="458.0" layoutY="139.0" prefHeight="456.0" prefWidth="575.0">

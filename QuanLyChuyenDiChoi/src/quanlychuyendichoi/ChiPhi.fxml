@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="851.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="851.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quanlychuyendichoi.ChiPhiController">
    <children>
       <Label alignment="CENTER" layoutY="-1.0" prefHeight="87.0" prefWidth="851.0" text="Quản lý chi phí" textFill="#6315c9">
          <font>

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package quanlychuyendichoi;
+package Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -12,9 +12,9 @@ import javafx.fxml.Initializable;
 /**
  * FXML Controller class
  *
- * @author Scoobydo
+ * @author Tung
  */
-public class QuanLyDiChoiController implements Initializable {
+public class ChiPhiController implements Initializable {
 
     /**
      * Initializes the controller class.
