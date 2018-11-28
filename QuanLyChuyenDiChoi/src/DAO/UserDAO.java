@@ -21,21 +21,22 @@ public class UserDAO {
         try {
             user.setID(rs.getInt("ID"));
             user.setEmail(rs.getString("Email"));
-            user.setLevel(rs.getInt("Lever"));
+            user.setLevel(rs.getInt("Level"));
             user.setPassword(rs.getString("Password"));
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("can't get user");
+            System.out.println("Can't get user");
         }
         return user;
 
     }
 
-    public ObservableList<User> getUser() throws SQLException {
+    public ObservableList<User> getListUser() throws SQLException {
         String sql = "select * from dbo.[User]";
         ObservableList<User> list = FXCollections.observableArrayList();
         try {
+            
             ResultSet rs = DBConnect.dbExcute(sql);
             while (rs.next()) {
                 User user = createUser(rs);

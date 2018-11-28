@@ -5,12 +5,14 @@
  */
 package DAO;
 
+import com.sun.rowset.CachedRowSetImpl;
 import java.lang.reflect.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.sql.rowset.CachedRowSet;
 import jdk.nashorn.internal.codegen.CompilerConstants;
 import jdk.nashorn.internal.objects.Global;
 
@@ -57,20 +59,19 @@ public class DBConnect {
     public static ResultSet dbExcute(String sql) throws SQLException{
         Statement stmt = null;
         ResultSet rs = null;
+        CachedRowSetImpl crs = null;
         try {
             dbConnect();
             stmt = connection.createStatement();
               rs =  stmt.executeQuery(sql);
-              while (rs.next()) {      
-                  
-                  System.out.println("ID" + rs.getInt("ID"));
-            }
+              crs = new CachedRowSetImpl();
+              crs.populate(rs);
         } catch (SQLException e) {
             System.out.print(e);
             System.out.print("Can't execute!");
         }
        dbDisconnect();
-       return rs;
+       return crs;
         }
     
     
