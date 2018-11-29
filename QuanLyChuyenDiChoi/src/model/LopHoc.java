@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package model;
 
 /**
  *
  * @author MyPC
  */
-public class ClassStudent {
+public class LopHoc {
     private String strMaLop;
     private String strTenLop;
-    private  int MaNH;
+   
 
     public String getStrMaLop() {
         return strMaLop;
@@ -29,12 +29,9 @@ public class ClassStudent {
     public void setStrTenLop(String strTenLop) {
         this.strTenLop = strTenLop;
     }
-    public int getNamHoc(){
-        return MaNH;
+  
+     @Override
+    public String toString(){
+        return this.strTenLop;
     }
-    public void setMaNH(int NH)
-    {
-        this.MaNH = NH;
-    }
-    
 }

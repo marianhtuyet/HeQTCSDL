@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package model;
 
 /**
  *
  * @author MyPC
  */
-public class Scholastic {
+public class NamHoc {
     private int MaNH;
     private String TenNH;
 
@@ -28,5 +28,8 @@ public class Scholastic {
     public void setTenNH(String TenNH) {
         this.TenNH = TenNH;
     }
-    
+    @Override
+    public String toString(){
+        return TenNH;
+    }
 }

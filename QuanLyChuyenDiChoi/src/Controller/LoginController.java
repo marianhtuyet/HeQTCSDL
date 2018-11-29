@@ -5,7 +5,8 @@
  */
 package Controller;
 
-import DAO.*;
+import model.User;
+import model.UserDAO;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;

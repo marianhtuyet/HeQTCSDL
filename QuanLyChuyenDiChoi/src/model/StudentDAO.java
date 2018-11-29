@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,8 +17,8 @@ import javax.naming.spi.DirStateFactory;
  */
 public class StudentDAO {
 
-    private Student createStudent(ResultSet rs) {
-        Student hs = new Student();
+    private HocSinh createStudent(ResultSet rs) {
+        HocSinh hs = new HocSinh();
         try {
             hs.setMaHS(rs.getInt("MaHS"));
             hs.setTenHS(rs.getString("TenHS"));
@@ -29,6 +29,7 @@ public class StudentDAO {
             hs.setTenNguoiGiamHo(rs.getString("TenNguoiGiamHo"));
             hs.setSDT(rs.getString("SDT"));
             hs.setMaLop(rs.getString("MaLop"));
+            hs.setNamHoc(rs.getInt("MaNH"));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,13 +38,15 @@ public class StudentDAO {
         return hs;
     }
 
-    public ObservableList<Student> getlistStudents(String MaLop) throws SQLException {
-        String sql = "SELECT * FROM dbo.HocSinh INNER JOIN dbo.CTLop ON CTLop.MaHS = HocSinh.MaHS WHERE MaLop = '" + MaLop + "'";
-        ObservableList<Student> list = FXCollections.observableArrayList();
+    public ObservableList<HocSinh> getlistStudents(String MaLop, int MaNH) throws SQLException {
+        String sql = "SELECT * FROM dbo.HocSinh INNER JOIN dbo.CTLop ON CTLop.MaHS = HocSinh.MaHS WHERE MaLop = '" + MaLop +
+                "' AND MaNH = " +MaNH;
+        System.out.println(sql);
+        ObservableList<HocSinh> list = FXCollections.observableArrayList();
         try {
             ResultSet rs = DBConnect.dbExcute(sql);
             while (rs.next()) {
-                Student hs = createStudent(rs);
+                HocSinh hs = createStudent(rs);
                 list.add(hs);
             }
         } catch (Exception e) {
@@ -54,27 +57,27 @@ public class StudentDAO {
         return list;
     }
 
-    private ClassStudent createClass(ResultSet rs) {
-        ClassStudent c = new ClassStudent();
+    private LopHoc createClass(ResultSet rs) {
+        LopHoc c = new LopHoc();
         try {
             c.setStrMaLop(rs.getString("MaLop"));
             c.setStrTenLop(rs.getString("TenLop"));
-            c.setMaNH(rs.getInt("MaNH"));
+           
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.print("Can't load HocSinh");
+            System.out.print("Can't load LopHoc");
         }
         return c;
     }
 
-    public ObservableList<ClassStudent> getListClass() throws SQLException {
+    public ObservableList<LopHoc> getListClass() throws SQLException {
         String sql = "select * from  LopHoc";
-        ObservableList<ClassStudent> list = FXCollections.observableArrayList();
+        ObservableList<LopHoc> list = FXCollections.observableArrayList();
         try {
             ResultSet rs = DBConnect.dbExcute(sql);
             while (rs.next()) {
-                ClassStudent hs = createClass(rs);
+                LopHoc hs = createClass(rs);
                 list.add(hs);
             }
         } catch (Exception e) {
@@ -83,8 +86,8 @@ public class StudentDAO {
         }
         return list;
     }
-    private Scholastic createScholastic(ResultSet rs) {
-        Scholastic scholastic = new Scholastic();
+    private NamHoc createScholastic(ResultSet rs) {
+        NamHoc scholastic = new NamHoc();
         try {
             
             scholastic.setMaNH(rs.getInt("MaNH"));
@@ -97,13 +100,13 @@ public class StudentDAO {
         return scholastic;
     }
 
-    public ObservableList<Scholastic> getListScholastics() throws SQLException {
+    public ObservableList<NamHoc> getListScholastics() throws SQLException {
         String sql = "select * from  NamHoc";
-        ObservableList<Scholastic> list = FXCollections.observableArrayList();
+        ObservableList<NamHoc> list = FXCollections.observableArrayList();
         try {
             ResultSet rs = DBConnect.dbExcute(sql);
             while (rs.next()) {
-                Scholastic scholastic = createScholastic(rs);
+                NamHoc scholastic = createScholastic(rs);
                 list.add(scholastic);
             }
         } catch (Exception e) {

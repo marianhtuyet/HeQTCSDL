@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package model;
 
 import java.sql.Date;
 
@@ -11,7 +11,7 @@ import java.sql.Date;
  *
  * @author MyPC
  */
-public class Student {
+public class HocSinh {
     private int MaHS;
     private String TenHS;
     private Date NgaySinh;
@@ -21,8 +21,9 @@ public class Student {
     private String TenNguoiGiamHo;
     private String SDT;
     private String MaLop;
+    private int NamHoc;
 
-    public Student(int MaHS, String TenHS, Date NgaySinh,String DiaChi, String TenCha, String TenMe, String TenNguoiGiamHo, String SDT) {
+    public HocSinh(int MaHS, String TenHS, Date NgaySinh,String DiaChi, String TenCha, String TenMe, String TenNguoiGiamHo, String SDT) {
         this.MaHS = MaHS;
         this.TenHS = TenHS;
         this.NgaySinh = NgaySinh;
@@ -34,7 +35,7 @@ public class Student {
         
     }
 
-    public Student() {
+    public HocSinh() {
     }
 
     public int getMaHS() {
@@ -80,7 +81,7 @@ public String getDiaChi() {
     }
     
     public void setDiaChi(String DiaChi) {
-        this.TenHS = DiaChi;
+        this.DiaChi = DiaChi;
     }
 
     public void setTenCha(String TenCha) {
@@ -102,7 +103,13 @@ public String getDiaChi() {
         return MaLop;
     }
      public void setMaLop(String MaLop) {
-        this.SDT = SDT;
+      this.MaLop  = MaLop;
+    }
+      public Integer getNamHoc(){
+        return NamHoc;
+    }
+     public void setNamHoc(int MaNH) {
+        this.NamHoc = MaNH;
     }
     
     

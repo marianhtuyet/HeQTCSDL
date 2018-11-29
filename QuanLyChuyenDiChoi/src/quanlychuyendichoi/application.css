@@ -17,7 +17,7 @@
     -fx-background-size: 100% 100%; 
 }
 .btnNomal{
-    #glass-grey {
+   
     -fx-background-color: 
         #c3c4c4,
         linear-gradient(#d6d6d6 50%, white 100%),
@@ -27,6 +27,6 @@
     -fx-text-fill: black;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
      -fx-font-weight: bold;
-}
+
 
 }

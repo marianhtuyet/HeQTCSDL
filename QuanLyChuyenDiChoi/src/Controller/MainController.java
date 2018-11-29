@@ -5,8 +5,8 @@
  */
 package Controller;
 
-import DAO.User;
-import DAO.UserDAO;
+import model.User;
+import model.UserDAO;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXNodesList;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
@@ -27,6 +27,7 @@ import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+
 
 /**
  * FXML Controller class
@@ -114,6 +115,17 @@ public class MainController implements Initializable {
         MaterialDesignIconView GiaoVienMngIcon = new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT_STAR_VARIANT);
         GiaoVienMngIcon.setId(".glyph-icon");
         btnGiaoVien.setGraphic(GiaoVienMngIcon);
+        btnGiaoVien.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    LoadGiaoVien(event);
+                } catch (Exception e) {
+                    System.out.print("Can't show hoc sinh");
+                }
+            }
+        } );
+        
         NodeList.addAnimatedNode(btnNhanSu);
         NodeList.addAnimatedNode(btnHocSinh);
         NodeList.addAnimatedNode(btnGiaoVien);
@@ -130,13 +142,13 @@ public class MainController implements Initializable {
         return btn;
     }
 
-    void loadHocSinh(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("quanlychuyendichoi/HocSinh.fxml"));
+   public  void loadHocSinh(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/quanlychuyendichoi/HocSinh.fxml"));
         rootPane.getChildren().setAll(pane);
         GeneralFuntion.FitChildContent(pane);
     }
-    void LoadGiaoVien(ActionEvent event) throws  IOException{
-          AnchorPane pane = FXMLLoader.load(getClass().getResource("quanlychuyendichoi/GiaoVien.fxml"));
+    public  void LoadGiaoVien(ActionEvent event) throws  IOException{
+          AnchorPane pane = FXMLLoader.load(getClass().getResource("/quanlychuyendichoi/GiaoVien.fxml"));
         rootPane.getChildren().setAll(pane);
         GeneralFuntion.FitChildContent(pane);
     }
