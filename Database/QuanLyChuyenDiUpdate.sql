@@ -1,4 +1,4 @@
-create database QuanLyDaNgoai
+--create database QuanLyDaNgoai
 use QuanLyDaNgoai
 set dateformat dmy
 
@@ -182,7 +182,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[GiaoVien](
-	[MaGV] [int] IDENTITY(1,1) NOT NULL,
+	[MaGV] [int]  NOT NULL,
 	[TenGV] [nvarchar](50) NULL,
 	[NgaySinh] [smalldatetime] NULL,
 	[DiaChi] [nvarchar](50) NULL,
@@ -243,7 +243,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[HocSinh](
-	[MaHS] [int] IDENTITY(1,1) NOT NULL,
+	[MaHS] [int]  NOT NULL,
 	[TenHS] [nvarchar](50) NULL,
 	[NgaySinh] [smalldatetime] NULL,
 	[DiaChi] [nvarchar](50) NULL,

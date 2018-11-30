@@ -73,6 +73,19 @@ public class DBConnect {
        dbDisconnect();
        return crs;
         }
-    
+     public static int dbExcuteQuery(String sql) throws SQLException{
+        Statement stmt = null;
+        int i = 0;
+        try {
+            dbConnect();
+            stmt = connection.createStatement();
+              i = stmt.executeUpdate(sql);
+        } catch (SQLException e) {
+            System.out.print(e);
+            System.out.print("Can't execute update!");
+        }
+       dbDisconnect();
+       return i;
+        }
     
 }

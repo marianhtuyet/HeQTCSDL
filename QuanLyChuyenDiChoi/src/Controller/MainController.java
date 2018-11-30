@@ -28,7 +28,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-
 /**
  * FXML Controller class
  *
@@ -36,8 +35,6 @@ import javafx.scene.text.Font;
  */
 public class MainController implements Initializable {
 
-    @FXML
-    private JFXButton btnChuyenDi;
     @FXML
     private JFXButton btnCTyDuLich;
     @FXML
@@ -52,6 +49,8 @@ public class MainController implements Initializable {
     public static MainController getMainController() {
         return mainController;
     }
+    @FXML
+    private JFXNodesList NodeListChuyenDi;
 
     /**
      * Initializes the controller class.
@@ -59,12 +58,65 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         createNhanSu();
+        
         // TODO
     }
 
-    @FXML
-    private void btnChuyenDiClick(ActionEvent event) throws SQLException {
-        userDAO = new UserDAO();
+    void createChuyenDi() {
+        JFXButton btnChuyenDi = CreateButton("Chuyến đi");
+        btnChuyenDi.setButtonType(JFXButton.ButtonType.RAISED);
+        MaterialDesignIconView ChuyenDiMngIcon = new MaterialDesignIconView(MaterialDesignIcon.BEACH);
+        ChuyenDiMngIcon.setId(".glyph-icon");
+        btnChuyenDi.setGraphic(ChuyenDiMngIcon);
+        btnChuyenDi.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                try {
+                    loadHocSinh(event);
+                } catch (Exception e) {
+                    System.out.print("Can't show hoc sinh");
+                }
+            }
+        });
+
+        JFXButton btnChiTietChuyenDi = CreateButton("Chương Trình");
+        btnChiTietChuyenDi.setButtonType(JFXButton.ButtonType.RAISED);
+        MaterialDesignIconView ChiTietChuyenDiMngIcon = new MaterialDesignIconView(MaterialDesignIcon.FILE_DOCUMENT);
+        ChiTietChuyenDiMngIcon.setId(".glyph-icon");
+        btnChiTietChuyenDi.setGraphic(ChiTietChuyenDiMngIcon);
+        btnChiTietChuyenDi.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                try {
+                    loadHocSinh(event);
+                } catch (Exception e) {
+                    System.out.print("Can't show hoc sinh");
+                }
+            }
+        });
+
+        JFXButton btnChiPhi = CreateButton("Chi phí");
+        btnChiPhi.setButtonType(JFXButton.ButtonType.RAISED);
+        MaterialDesignIconView ChiPhiMngIcon = new MaterialDesignIconView(MaterialDesignIcon.DIAMOND);
+        ChiPhiMngIcon.setId(".glyph-icon");
+        btnChiPhi.setGraphic(ChiPhiMngIcon);
+        btnChiPhi.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                try {
+                    loadHocSinh(event);
+                } catch (Exception e) {
+                    System.out.print("Can't show hoc sinh");
+                }
+            }
+        });
+        NodeListChuyenDi.addAnimatedNode(btnChuyenDi);
+        NodeListChuyenDi.addAnimatedNode(btnChiTietChuyenDi);
+        NodeListChuyenDi.addAnimatedNode(btnChiPhi);
+
     }
 
     @FXML
@@ -124,8 +176,8 @@ public class MainController implements Initializable {
                     System.out.print("Can't show hoc sinh");
                 }
             }
-        } );
-        
+        });
+
         NodeList.addAnimatedNode(btnNhanSu);
         NodeList.addAnimatedNode(btnHocSinh);
         NodeList.addAnimatedNode(btnGiaoVien);
@@ -142,13 +194,14 @@ public class MainController implements Initializable {
         return btn;
     }
 
-   public  void loadHocSinh(ActionEvent event) throws IOException {
+    public void loadHocSinh(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/quanlychuyendichoi/HocSinh.fxml"));
         rootPane.getChildren().setAll(pane);
         GeneralFuntion.FitChildContent(pane);
     }
-    public  void LoadGiaoVien(ActionEvent event) throws  IOException{
-          AnchorPane pane = FXMLLoader.load(getClass().getResource("/quanlychuyendichoi/GiaoVien.fxml"));
+
+    public void LoadGiaoVien(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/quanlychuyendichoi/GiaoVien.fxml"));
         rootPane.getChildren().setAll(pane);
         GeneralFuntion.FitChildContent(pane);
     }

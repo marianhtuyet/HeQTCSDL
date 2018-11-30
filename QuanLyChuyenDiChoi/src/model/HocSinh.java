@@ -22,6 +22,7 @@ public class HocSinh {
     private String SDT;
     private String MaLop;
     private int NamHoc;
+    private int TrangThai;
 
     public HocSinh(int MaHS, String TenHS, Date NgaySinh,String DiaChi, String TenCha, String TenMe, String TenNguoiGiamHo, String SDT) {
         this.MaHS = MaHS;
@@ -110,6 +111,14 @@ public String getDiaChi() {
     }
      public void setNamHoc(int MaNH) {
         this.NamHoc = MaNH;
+    }
+
+    public int getTrangThai() {
+        return TrangThai;
+    }
+
+    public void setTrangThai(int TrangThai) {
+        this.TrangThai = TrangThai;
     }
     
     

@@ -30,6 +30,7 @@ public class StudentDAO {
             hs.setSDT(rs.getString("SDT"));
             hs.setMaLop(rs.getString("MaLop"));
             hs.setNamHoc(rs.getInt("MaNH"));
+            hs.setTrangThai(rs.getInt("TrangThai"));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -39,8 +40,8 @@ public class StudentDAO {
     }
 
     public ObservableList<HocSinh> getlistStudents(String MaLop, int MaNH) throws SQLException {
-        String sql = "SELECT * FROM dbo.HocSinh INNER JOIN dbo.CTLop ON CTLop.MaHS = HocSinh.MaHS WHERE MaLop = '" + MaLop +
-                "' AND MaNH = " +MaNH;
+        String sql = "SELECT * FROM dbo.HocSinh INNER JOIN dbo.CTLop ON CTLop.MaHS = HocSinh.MaHS WHERE MaLop = '" + MaLop
+                + "' AND MaNH = " + MaNH + " and TrangThai = 1";
         System.out.println(sql);
         ObservableList<HocSinh> list = FXCollections.observableArrayList();
         try {
@@ -62,7 +63,6 @@ public class StudentDAO {
         try {
             c.setStrMaLop(rs.getString("MaLop"));
             c.setStrTenLop(rs.getString("TenLop"));
-           
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -86,10 +86,11 @@ public class StudentDAO {
         }
         return list;
     }
+
     private NamHoc createScholastic(ResultSet rs) {
         NamHoc scholastic = new NamHoc();
         try {
-            
+
             scholastic.setMaNH(rs.getInt("MaNH"));
             scholastic.setTenNH(rs.getString("TenNH"));
 
@@ -115,4 +116,70 @@ public class StudentDAO {
         }
         return list;
     }
+
+    public void AddHocSinh(HocSinh hs) {
+        String sql = "INSERT INTO dbo.HocSinh(MaHS, TenHS ,NgaySinh ,DiaChi ,TenCha ,TenMe ,TenNguoiGiamHo , SDT, TrangThai )VALUES  ( " + hs.getMaHS() + ", N'" + hs.getTenHS() + "' ,'" + hs.getNgaySinh() + "', N'"
+                + hs.getDiaChi() + "' , N'" + hs.getTenCha() + "' ,N'" + hs.getTenMe() + "' ,N'"
+                + hs.getTenNguoiGiamHo() + "' ,  N'" + hs.getSDT() + "',  1  )\n "
+                + "insert into CTLop values( " + hs.getMaHS() + ", '" + hs.getMaLop() + "', " + hs.getNamHoc() + ")";
+        System.out.println(sql);
+        try {
+            int stmt = DBConnect.dbExcuteQuery(sql);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            System.out.println("Can't Add HocSinh!");
+        }
+    }
+
+    public void UpdateHocSinh(HocSinh hs) {
+        String sql = "UPDATE dbo.HocSinh SET TenHS = '" + hs.getTenHS() + "', NgaySinh = '" + hs.getNgaySinh() + "',"
+                + " DiaChi = '" + hs.getDiaChi() + "', TenCha = '" + hs.getTenCha() + "', TenMe = '" + hs.getTenMe() + "', "
+                + "TenNguoiGiamHo = '" + hs.getTenNguoiGiamHo() + "', SDT = '" + hs.getSDT() + "' WHERE MaHS = " + hs.getMaHS();
+        try {
+            int stmt = DBConnect.dbExcuteQuery(sql);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            System.out.println("Can't Add HocSinh!");
+        }
+    }
+
+    public void DeleteHocSinh(HocSinh hs) {
+        String sql = "update hocsinh set TrangThai = 0  where MaHS = " + hs.getMaHS();
+
+        try {
+            int stmt = DBConnect.dbExcuteQuery(sql);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            System.out.println("Can't Add HocSinh!");
+        }
+    }
+
+    public int MaxMaHS() {
+        String sql = "SELECT MAX(dbo.HocSinh.MaHS) AS maxhs FROM dbo.HocSinh";
+        ResultSet rs = null;
+        int max = 0;
+        try {
+            rs = DBConnect.dbExcute(sql);
+            while (rs.next()) {
+                max = rs.getInt("maxhs");
+            }
+        } catch (Exception e) {
+        }
+        return max;
+    }
+    public HocSinh SearchHocSinh(String sql)
+    {
+        ResultSet rs = null;
+        HocSinh hs = new HocSinh();
+        try {
+            rs = DBConnect.dbExcute(sql);
+            while (rs.next()) {                
+                hs = createStudent(rs);
+            }
+        } catch (Exception e) {
+        }
+        return hs;
+    }    
+  
+  
 }
