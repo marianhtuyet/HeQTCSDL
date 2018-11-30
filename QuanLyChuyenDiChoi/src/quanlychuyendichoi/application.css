@@ -1,7 +1,8 @@
 .background{
-
-    -fx-background-color: #75BCEC;
+    -fx-background-image: url("../image/sky.jpg");
     -fx-background-size: 100% 100%; 
+/*    -fx-background-color: #75BCEC;
+    -fx-background-size: 100% 100%; */
 }
 
 .button{

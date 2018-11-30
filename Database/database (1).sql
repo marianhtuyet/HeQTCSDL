@@ -1,17 +1,18 @@
 ﻿USE QuanLyDaNgoai
 set dateformat dmy
 
-insert into HocSinh(TenHS,NgaySinh,DiaChi,TenCha,TenMe,TenNguoiDamHo,SDT) values (N'Nguyễn Văn A','1/1/2013',N'TpHCM',N'Nguyễn Tiến A',N'Nguyễn Thảo A',N'Không','01322655865')
-insert into HocSinh(TenHS,NgaySinh,DiaChi,TenCha,TenMe,TenNguoiDamHo,SDT) values (N'Nguyễn Thị B','2/5/2014',N'Đồng Nai',N'Nguyễn Văn B',N'Nguyễn Trần B',N'Không','01234567895')
-insert into HocSinh(TenHS,NgaySinh,DiaChi,TenCha,TenMe,TenNguoiDamHo,SDT) values (N'Nguyễn Bá C','5/7/2015',N'Vũng Tàu',N'Nguyễn Vũ C',N'Nguyễn Trần Thiên C',N'Không','02564875325')
-insert into HocSinh(TenHS,NgaySinh,DiaChi,TenCha,TenMe,TenNguoiDamHo,SDT) values (N'Nguyễn Hùng D','12/5/2013',N'Tây Ninh',N'Không',N'Không',N'Nguyễn Trần Nhật D','02564857955')
-insert into HocSinh(TenHS,NgaySinh,DiaChi,TenCha,TenMe,TenNguoiDamHo,SDT) values (N'Nguyễn Quá E','5/8/2014',N'Long An',N'Nguyễn Quảng E',N'Nguyễn Ngọc E',N'Không','01475896235')
-insert into HocSinh(TenHS,NgaySinh,DiaChi,TenCha,TenMe,TenNguoiDamHo,SDT) values (N'Lê Sáng F','6/12/2015',N'Bình Dương',N'Lê Vũ F',N'Trần Thị F',N'Không','0582296593')
-insert into HocSinh(TenHS,NgaySinh,DiaChi,TenCha,TenMe,TenNguoiDamHo,SDT) values (N'Trần Lâm G','12/9/2013',N'Cần Thơ',N'Trần Quang G',N'Vũ Thị G',N'Không','01586547785')
-insert into HocSinh(TenHS,NgaySinh,DiaChi,TenCha,TenMe,TenNguoiDamHo,SDT) values (N'Đào Bá H','25/12/2014',N'An Giang',N'Đào Văn H',N'Trần Thị Vân H',N'Không','0586589825')
-insert into HocSinh(TenHS,NgaySinh,DiaChi,TenCha,TenMe,TenNguoiDamHo,SDT) values (N'Vũ Văn I','1/7/2015',N'Bến Tre',N'Vũ Minh I',N'Nguyễn Tâm I',N'Không','0895878465')
-insert into HocSinh(TenHS,NgaySinh,DiaChi,TenCha,TenMe,TenNguoiDamHo,SDT) values (N'Trần Thế K','2/2/2013',N'Bình Thuận',N'Trần Bá K',N'Lê Thị K',N'Không','01246355855')
-
+insert into HocSinh(MaHS,TenHS,NgaySinh,DiaChi,TenCha,TenMe,TenNguoiGiamHo,SDT) values (1,N'Nguyễn Văn A','1/1/2013',N'TpHCM',N'Nguyễn Tiến A',N'Nguyễn Thảo A',N'Không','01322655865')
+insert into HocSinh(MaHS,TenHS,NgaySinh,DiaChi,TenCha,TenMe,TenNguoiGiamHo,SDT) values (2,N'Nguyễn Thị B','2/5/2014',N'Đồng Nai',N'Nguyễn Văn B',N'Nguyễn Trần B',N'Không','01234567895')
+insert into HocSinh(MaHS,TenHS,NgaySinh,DiaChi,TenCha,TenMe,TenNguoiGiamHo,SDT) values (3,N'Nguyễn Bá C','5/7/2015',N'Vũng Tàu',N'Nguyễn Vũ C',N'Nguyễn Trần Thiên C',N'Không','02564875325')
+insert into HocSinh(MaHS,TenHS,NgaySinh,DiaChi,TenCha,TenMe,TenNguoiGiamHo,SDT) values (4,N'Nguyễn Hùng D','12/5/2013',N'Tây Ninh',N'Không',N'Không',N'Nguyễn Trần Nhật D','02564857955')
+insert into HocSinh(MaHS,TenHS,NgaySinh,DiaChi,TenCha,TenMe,TenNguoiGiamHo,SDT) values (5,N'Nguyễn Quá E','5/8/2014',N'Long An',N'Nguyễn Quảng E',N'Nguyễn Ngọc E',N'Không','01475896235')
+insert into HocSinh(MaHS,TenHS,NgaySinh,DiaChi,TenCha,TenMe,TenNguoiGiamHo,SDT) values (6,N'Lê Sáng F','6/12/2015',N'Bình Dương',N'Lê Vũ F',N'Trần Thị F',N'Không','0582296593')
+insert into HocSinh(MaHS,TenHS,NgaySinh,DiaChi,TenCha,TenMe,TenNguoiGiamHo,SDT) values (7,N'Trần Lâm G','12/9/2013',N'Cần Thơ',N'Trần Quang G',N'Vũ Thị G',N'Không','01586547785')
+insert into HocSinh(MaHS,TenHS,NgaySinh,DiaChi,TenCha,TenMe,TenNguoiGiamHo,SDT) values (8,N'Đào Bá H','25/12/2014',N'An Giang',N'Đào Văn H',N'Trần Thị Vân H',N'Không','0586589825')
+insert into HocSinh(MaHS,TenHS,NgaySinh,DiaChi,TenCha,TenMe,TenNguoiGiamHo,SDT) values (9,N'Vũ Văn I','1/7/2015',N'Bến Tre',N'Vũ Minh I',N'Nguyễn Tâm I',N'Không','0895878465')
+insert into HocSinh(MaHS,TenHS,NgaySinh,DiaChi,TenCha,TenMe,TenNguoiGiamHo,SDT) values (10,N'Trần Thế K','2/2/2013',N'Bình Thuận',N'Trần Bá K',N'Lê Thị K',N'Không','01246355855')
+update HocSinh
+set TrangThai=1
 
 insert into NamHoc values (2018,'2018-2019')
 insert into NamHoc values (2019,'2019-2020')
@@ -55,3 +56,12 @@ insert into CongTyDuLich values ('CT2',N'Saigontourist',N'45 Lê Thánh Tôn, Ph
 
 insert into DiaDiem values ('DD1',N'CVVH Đầm Sen',N'Số 3 Hòa Bình, Phường 3, Quận 11, Hồ Chí Minh')
 insert into DiaDiem values ('DD2',N'Thảo cầm viên Sài Gòn',N'2 Nguyễn Bỉnh Khiêm, Bến Nghé, Quận 1, Hồ Chí Minh')
+
+
+INSERT INTO dbo.[User]
+        ( ID, Email, Password, Level )
+VALUES  ( 1, -- ID - int
+          N'16521409@gm.uit.edu.vn', -- Email - nvarchar(50)
+          N'1', -- Password - nvarchar(50)
+          1  -- Level - int
+          )s
