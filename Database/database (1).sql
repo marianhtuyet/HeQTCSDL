@@ -58,10 +58,4 @@ insert into DiaDiem values ('DD1',N'CVVH Đầm Sen',N'Số 3 Hòa Bình, Phư�
 insert into DiaDiem values ('DD2',N'Thảo cầm viên Sài Gòn',N'2 Nguyễn Bỉnh Khiêm, Bến Nghé, Quận 1, Hồ Chí Minh')
 
 
-INSERT INTO dbo.[User]
-        ( ID, Email, Password, Level )
-VALUES  ( 1, -- ID - int
-          N'16521409@gm.uit.edu.vn', -- Email - nvarchar(50)
-          N'1', -- Password - nvarchar(50)
-          1  -- Level - int
-          )s
+INSERT INTO dbo.[User] ( ID, Email, Password, Level )VALUES  ( 1, N'16521409@gm.uit.edu.vn',  N'1', 1  )
