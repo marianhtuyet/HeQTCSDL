@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="QuanLyChuyenDiChoi.jar" size="239548" download="eager" />
+    <jar href="QuanLyChuyenDiChoi.jar" size="243517" download="eager" />
     <jar href="lib\controlsfx-8.40.14.jar" size="1215643" download="eager" />
     <jar href="lib\controlsfx-samples-8.40.14.jar" size="725707" download="eager" />
     <jar href="lib\fontawesomefx-8.9.jar" size="571068" download="eager" />

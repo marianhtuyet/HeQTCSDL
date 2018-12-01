@@ -5,6 +5,8 @@
  */
 package model;
 
+import javafx.collections.ObservableList;
+
 /**
  *
  * @author MyPC
@@ -57,6 +59,15 @@ public class User {
         this.Password = Password;
     }
     
-    
+    public static User getbyEmail(String emailString, ObservableList<User> list)
+    {
+       for (User u : list) {
+            if (u.getEmail().equals(emailString)) 
+            {
+                return u;
+            }
+        }
+       return null;
+    }
     
 }

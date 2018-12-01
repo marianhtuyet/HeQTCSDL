@@ -36,7 +36,7 @@ public class UserDAO {
         String sql = "select * from dbo.[User]";
         ObservableList<User> list = FXCollections.observableArrayList();
         try {
-            
+
             ResultSet rs = DBConnect.dbExcute(sql);
             while (rs.next()) {
                 User user = createUser(rs);
@@ -45,6 +45,35 @@ public class UserDAO {
         } catch (Exception e) {
         }
         return list;
+    }
+
+    public void AddUser(User hs) {
+        String sql = "INSERT INTO dbo.[User]\n"
+                + "        ( ID, Email, Password, Level )\n"
+                + "VALUES  ( " + hs.getID() + ", \n"
+                + "          N'" + hs.getEmail() + "', \n"
+                + "          N'" + hs.getPassword() + "', \n"
+                + "          1  \n"
+                + "          )";
+
+        System.out.println(sql);
+        try {
+            int stmt = DBConnect.dbExcuteQuery(sql);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            System.out.println("Can't Add HocSinh!");
+        }
+    }
+
+    public void UpdateUser(User hs) {
+        String sql = "  UPDATE dbo.[User]  SET Password = '"+hs.getPassword()+"' WHERE ID = "+ hs.getID();
+        System.out.println(sql);
+        try {
+            int stmt = DBConnect.dbExcuteQuery(sql);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            System.out.println("Can't Add HocSinh!");
+        }
     }
 
 }
