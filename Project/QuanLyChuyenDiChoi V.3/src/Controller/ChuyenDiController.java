@@ -101,6 +101,8 @@ public class ChuyenDiController implements Initializable {
     private JFXButton btnChiPhi;
     @FXML
     private AnchorPane paneChuyenDi;
+    @FXML
+    private JFXButton btnThem;
 
     /**
      * Initializes the controller class.
@@ -111,6 +113,11 @@ public class ChuyenDiController implements Initializable {
             // TODO
             LoadTable();
             loadComBoBox();
+            btnMoi.setVisible(false);
+            btnLuu.setVisible(false);
+            btnXoa.setVisible(false);
+            btnChiPhi.setVisible(false);
+            btnChiTiet.setVisible(false);
             //loadcombobox(listCongTy,listDiaDiem);
         } catch (SQLException ex) {
             Logger.getLogger(ChuyenDiController.class.getName()).log(Level.SEVERE, null, ex);
@@ -239,19 +246,20 @@ public class ChuyenDiController implements Initializable {
     @FXML
     private void btnMoiClick(ActionEvent event) throws SQLException {
         tfMaChuyenDi.clear();
+        btnMoi.setVisible(false);
+        btnThem.setVisible(true);
+        btnXoa.setVisible(false);
+        btnLuu.setVisible(false);
+        btnChiTiet.setVisible(false);
+        btnChiPhi.setVisible(false);
+        lbKetQua.setText("");
         LoadTable();
 
     }
 
     @FXML
     private void btlLuuClick(ActionEvent event) throws SQLException {
-        if (tfMaChuyenDi.getText().isEmpty()) {
-            if (addChuyenDi() == true) {
-                lbKetQua.setText("Thêm thành công!");
-            } else {
-                lbKetQua.setText("Thêm thất bại!");
-            }
-        } else if (tfMaChuyenDi.getText().isEmpty() == false) {
+         if (tfMaChuyenDi.getText().isEmpty() == false) {
             if (UpdateChuyenDi() == true) {
                 lbKetQua.setText("Cập nhật thành công!");
             } else {
@@ -284,6 +292,12 @@ public class ChuyenDiController implements Initializable {
     @FXML
     private void tableChuyenDiClick(MouseEvent e) {
         if (MouseButton.PRIMARY == e.getButton() && e.getClickCount() == 1) {
+            btnThem.setVisible(false);
+            btnMoi.setVisible(true);
+            btnLuu.setVisible(true);
+            btnXoa.setVisible(true);
+            btnChiPhi.setVisible(true);
+            btnChiTiet.setVisible(true);
             ChuyenDi chuyenDi = tbChuyenDi.getSelectionModel().getSelectedItem();
             tfMaChuyenDi.setText(String.valueOf(chuyenDi.getMaChuyenDi()));
             cmbTenCongTy.setValue(CongTyDuLich.CongTyDuLich(chuyenDi.getTenCongTy(), listCongTy));
@@ -312,5 +326,16 @@ public class ChuyenDiController implements Initializable {
 
     @FXML
     private void btnChiPhiClick(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnThemClick(ActionEvent event) throws SQLException {
+   
+            if (addChuyenDi() == true) {
+                lbKetQua.setText("Thêm thành công!");
+            } else {
+                lbKetQua.setText("Thêm thất bại!");
+            }
+        LoadTable();
     }
 }

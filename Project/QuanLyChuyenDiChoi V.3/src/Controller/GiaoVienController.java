@@ -98,6 +98,8 @@ public class GiaoVienController implements Initializable {
     
     private GiaoVienDAO giaoVienDAO;
     private LopHocDAO lopHocDAO;
+    @FXML
+    private JFXButton btnThem;
     /**
      * Initializes the controller class.
      */
@@ -107,6 +109,9 @@ public class GiaoVienController implements Initializable {
             // TODO
             loadTable();
             loadCombobox();
+            btnMoi.setVisible(false);
+            btnLuu.setVisible(false);
+            btnXoa.setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(GiaoVienController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -182,6 +187,11 @@ public class GiaoVienController implements Initializable {
         tfDiaChi.clear();
         tfSDT.clear();
         tfCMND.clear();
+         btnMoi.setVisible(false);
+        btnThem.setVisible(true);
+        btnXoa.setVisible(false);
+        btnLuu.setVisible(false);
+        lbThongBao.setText("");
         loadTable();
     }
 
@@ -206,13 +216,8 @@ public class GiaoVienController implements Initializable {
 
     @FXML
     private void btnLuuClick(ActionEvent event) throws SQLException {
-        if(tfMaGiaoVien.getText().isEmpty()){
-            if(addGiaoVien()==true)
-                lbThongBao.setText("Thêm thành công!");
-            else
-                lbThongBao.setText("Thêm thất bại!");
-        }
-        else if(tfMaGiaoVien.getText().isEmpty()==false){
+        
+         if(tfMaGiaoVien.getText().isEmpty()==false){
             if(updateGiaoVien()==true)
                 lbThongBao.setText("Cập nhật thành công!");
             else
@@ -262,6 +267,10 @@ public class GiaoVienController implements Initializable {
     @FXML
     private void tbGiaoVienClick(MouseEvent e) {
         if(MouseButton.PRIMARY == e.getButton() && e.getClickCount() == 1){
+            btnLuu.setVisible(true);
+            btnXoa.setVisible(true);
+            btnMoi.setVisible(true);
+            btnThem.setVisible(false);
             GiaoVien giaoVien = tbGiaoVien.getSelectionModel().getSelectedItem();
             tfMaGiaoVien.setText(String.valueOf(giaoVien.getMaGiaoVien()));
             tfTenGiaoVien.setText(String.valueOf(giaoVien.getTenGiaoVien()));
@@ -271,6 +280,17 @@ public class GiaoVienController implements Initializable {
             tfCMND.setText(String.valueOf(giaoVien.getCMND()));
             cmbLop.setValue(LopHoc.lopHoc(giaoVien.getMaLop(), listLopHoc));
         }
+    }
+
+    @FXML
+    private void btnThemClick(ActionEvent event) throws SQLException {
+        
+            if(addGiaoVien()==true)
+                lbThongBao.setText("Thêm thành công!");
+            else
+                lbThongBao.setText("Thêm thất bại!");
+            loadTable();
+        
     }
 
     

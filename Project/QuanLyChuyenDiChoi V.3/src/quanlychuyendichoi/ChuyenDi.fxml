@@ -39,12 +39,13 @@
                </font>
             </Label>
             <JFXButton fx:id="btnMoi" layoutX="60.0" layoutY="410.0" onAction="#btnMoiClick" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Mới" />
-            <JFXButton fx:id="btnLuu" layoutX="148.0" layoutY="410.0" onAction="#btlLuuClick" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Lưu" />
+            <JFXButton fx:id="btnLuu" layoutX="148.0" layoutY="410.0" onAction="#btlLuuClick" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Sửa" />
             <JFXButton fx:id="btnXoa" layoutX="235.0" layoutY="410.0" onAction="#btnXoaClick" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Xóa" />
             <JFXComboBox fx:id="cmbTenDiaDiem" layoutX="126.0" layoutY="234.0" prefHeight="25.0" prefWidth="222.0" />
             <Label fx:id="lbKetQua" alignment="CENTER" layoutX="114.0" layoutY="359.0" prefHeight="17.0" prefWidth="154.0" textFill="#e10202" />
             <JFXButton fx:id="btnChiTiet" layoutX="100.0" layoutY="487.0" onAction="#btnChiTietClick" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Chi tiết" />
             <JFXButton fx:id="btnChiPhi" layoutX="181.0" layoutY="487.0" onAction="#btnChiPhiClick" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Chi phí" />
+            <JFXButton fx:id="btnThem" layoutX="60.0" layoutY="410.0" onAction="#btnThemClick" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Thêm" />
          </children>
       </AnchorPane>
       <Label alignment="CENTER" prefHeight="60.0" prefWidth="1033.0" text="QUẢN LÝ CHUYẾN ĐI" textFill="#3a148f">

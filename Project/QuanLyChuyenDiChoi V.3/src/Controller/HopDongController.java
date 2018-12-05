@@ -132,6 +132,10 @@ public class HopDongController implements Initializable {
     private CongTyDAO congTyDAO;
     @FXML
     private JFXTextField tfTriGia2;
+    @FXML
+    private JFXButton btnThem1;
+    @FXML
+    private JFXButton btnThem2;
     
     
 
@@ -144,6 +148,13 @@ public class HopDongController implements Initializable {
             // TODO
             LoadTableHopDong();
             loadComBoBox();
+            btnMoi1.setVisible(false);
+            btnMoi2.setVisible(false);
+            btnThem2.setVisible(false);
+            btnLuu1.setVisible(false);
+            btnLuu2.setVisible(false);
+            btnXoa1.setVisible(false);
+            btnXoa2.setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(HopDongController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -215,12 +226,11 @@ public class HopDongController implements Initializable {
         hopDongDAO = new HopDongDAO();
        
         String maHopDong=tfMaHopDong1.getText();
-        int lanThanhToan = Integer.parseInt(tfLanThanhToan.getText());
-         System.out.println(lanThanhToan);
+        int soLanThanhToan = hopDongDAO.MaxLanThanhToan(maHopDong)+1;
         Date ngayThanhToan = Date.valueOf(dpNgayThanhToan.getValue());
         float soTien= Float.parseFloat(tfTriGia2.getText());
 
-        return hopDongDAO.themThanhToan(maHopDong, lanThanhToan, ngayThanhToan, soTien);
+        return hopDongDAO.themThanhToan(maHopDong, soLanThanhToan, ngayThanhToan, soTien);
     }
      public boolean UpdateHopDong() throws SQLException {
         hopDongDAO = new HopDongDAO();
@@ -318,6 +328,15 @@ public class HopDongController implements Initializable {
         tbHopDong.setItems(listHopDong);
 
     }
+     public boolean UpdateThanhToan() throws SQLException {
+        hopDongDAO = new HopDongDAO();
+        String maHopDong = tfMaHopDong2.getText();
+        int lanThanhToan = Integer.parseInt(tfLanThanhToan.getText());
+        Date ngayThanhToan = Date.valueOf(dpNgayThanhToan.getValue());
+        float triGia = Float.parseFloat(tfTriGia2.getText());   
+
+        return hopDongDAO.suaThanhToan(maHopDong, lanThanhToan, ngayThanhToan, triGia);
+    }
     @FXML
     private void btnTimHopDong(ActionEvent event) throws SQLException {
         if (tfTimMaHopDong.getText().isEmpty()) {
@@ -341,6 +360,17 @@ public class HopDongController implements Initializable {
         tfMaHopDong1.clear();
         tfMaChuyenDi.clear();
         tfTriGia1.clear();
+        btnMoi1.setVisible(false);
+        btnThem1.setVisible(true);
+        btnXoa1.setVisible(false);
+        btnLuu1.setVisible(false);
+        btnMoi2.setVisible(false);
+        btnThem2.setVisible(false);
+        btnXoa2.setVisible(false);
+        btnLuu2.setVisible(false);
+       
+        
+        lbThongBaoTT.setText("");
         lbThongBaoHD.setText("");
         LoadTableHopDong();
         
@@ -348,19 +378,14 @@ public class HopDongController implements Initializable {
 
     @FXML
     private void btnLuu1Click(ActionEvent event) throws SQLException {
-         if (tfMaHopDong1.getText().isEmpty()) {
-            if (addHopDong()== true) {
-                lbThongBaoHD.setText("Thêm thành công!");
-            } else {
-                lbThongBaoHD.setText("Thêm thất bại!");
-            }
-        } else if (tfMaHopDong1.getText().isEmpty() == false) {
+        
+   
             if (UpdateHopDong()== true) {
                 lbThongBaoHD.setText("Cập nhật thành công!");
             } else {
                 lbThongBaoHD.setText("Cập nhật thất bại!");
             }
-        }
+        
         LoadTableHopDong();
     }
 
@@ -382,28 +407,25 @@ public class HopDongController implements Initializable {
 
     @FXML
     private void btnMoi2Click(ActionEvent event) {
+        btnMoi2.setVisible(false);
+        btnThem2.setVisible(true);
+        btnXoa2.setVisible(false);
+        btnLuu2.setVisible(false);
+       
+        tfTriGia.clear();
+       
     }
 
     @FXML
     private void btnLuu2Click(ActionEvent event) throws SQLException {
-//        if (tfMaHopDong2.getText().isEmpty()) {
-            
-                if (addThanhToan()== true) {
-                    try {
-                        lbThongBaoTT.setText("Thêm thành công!");
-                    } catch (Exception e) {
-                        System.out.println("Ko hiển thị thông báo đc");
-                    }
-
-                } else {
-                    lbThongBaoTT.setText("Thêm thất bại!");
-                }
-
-                LoadTableHopDong();
+         if (UpdateThanhToan()== true) {
+                lbThongBaoTT.setText("Cập nhật thành công!");
+            } else {
+                lbThongBaoTT.setText("Cập nhật thất bại!");
+            }
                 LoadTableThanhToan(tfMaHopDong1.getText());
-            
-            
-            
+                LoadTableHopDong();
+                
     }
 
     @FXML
@@ -423,6 +445,10 @@ public class HopDongController implements Initializable {
     @FXML
     private void tableThanhToanClick(MouseEvent e) {
         if (MouseButton.PRIMARY == e.getButton() && e.getClickCount() == 1) {
+            btnMoi2.setVisible(true);
+            btnThem2.setVisible(false);
+            btnXoa2.setVisible(true);
+            btnLuu2.setVisible(true);
             ThanhToan thanhToan = tbThanhToan.getSelectionModel().getSelectedItem();
             tfMaHopDong2.setText(String.valueOf(thanhToan.getMaHopDong()));
             tfLanThanhToan.setText(String.valueOf(thanhToan.getLanThanhToan()));
@@ -435,6 +461,15 @@ public class HopDongController implements Initializable {
     @FXML
     private void tableHopDongClick(MouseEvent e) throws SQLException {
          if (MouseButton.PRIMARY == e.getButton() && e.getClickCount() == 1) {
+           
+            btnMoi1.setVisible(true);
+            btnThem1.setVisible(false);
+            btnXoa1.setVisible(true);
+            btnLuu1.setVisible(true);
+            btnMoi2.setVisible(false);
+            btnThem2.setVisible(true);
+            btnXoa2.setVisible(false);
+            btnLuu2.setVisible(false);
             HopDong hopDong = tbHopDong.getSelectionModel().getSelectedItem();
             tfMaHopDong1.setText(String.valueOf(hopDong.getMaHopDong()));
             tfMaHopDong2.setText(String.valueOf(hopDong.getMaHopDong()));
@@ -445,6 +480,31 @@ public class HopDongController implements Initializable {
             
             LoadTableThanhToan(hopDong.getMaHopDong());
         }
+    }
+
+    @FXML
+    private void btnThemClick1(ActionEvent event) throws SQLException {
+
+            if (addHopDong()== true) {
+                lbThongBaoHD.setText("Thêm thành công!");
+            } else 
+                lbThongBaoHD.setText("Thêm thất bại!");
+            LoadTableHopDong();
+            
+    }
+
+    @FXML
+    private void btnThem2Click(ActionEvent event) throws SQLException {
+         if (addThanhToan()== true) {
+                    try {
+                        lbThongBaoTT.setText("Thêm thành công!");
+                    } catch (Exception e) {
+                        System.out.println("Ko hiển thị thông báo đc");
+                    }
+         }
+         LoadTableThanhToan(tfMaHopDong1.getText());
+         LoadTableHopDong();
+
     }
     
 }

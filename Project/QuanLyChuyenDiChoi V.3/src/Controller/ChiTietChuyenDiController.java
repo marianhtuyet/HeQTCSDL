@@ -72,16 +72,22 @@ public class ChiTietChuyenDiController implements Initializable {
     private AnchorPane paneChiTietChuyenDiOld;
     @FXML
     private Label lbThongBao;
+    @FXML
+    private JFXButton btnThem;
         
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+         btnMoi.setVisible(false);
+        btnLuu.setVisible(false);
+        btnXoa.setVisible(false);
         // TODO
     }
 public void initData(String MaChuyenDi)
     {
+       
         tfMaChuyenDi.setText(MaChuyenDi);
         chiTietChuyenDiDAO = new ChiTietChuyenDiDAO();
        listChiTietChuyenDi = chiTietChuyenDiDAO.getlistChiTietChuyenDi(MaChuyenDi);
@@ -129,6 +135,11 @@ private void SetCellValueFactory()
     private void btnMoiClick(ActionEvent event) throws SQLException {
         taHoatDong.clear();
         taGhiChu.clear();
+        btnMoi.setVisible(false);
+        btnThem.setVisible(true);
+        btnXoa.setVisible(false);
+        btnLuu.setVisible(false);
+        lbThongBao.setText("");
     
     }
      public void showAlertDelete() throws SQLException{
@@ -178,10 +189,10 @@ private void SetCellValueFactory()
 
     @FXML
     private void btnLuuClick(ActionEvent event) throws SQLException {
-        if(addCTChuyenDi()==true)
-                lbThongBao.setText("Thêm thành công!");
+        if(UpdateCTChuyenDi()==true)
+                lbThongBao.setText("Cập nhật thành công!");
             else
-                lbThongBao.setText("Thêm thất bại!");
+                lbThongBao.setText("Cập nhật thất bại!");
         initData(tfMaChuyenDi.getText());
     }
 
@@ -189,12 +200,26 @@ private void SetCellValueFactory()
     @FXML
     private void tableCTChuyenDiClick(MouseEvent e) {
         if(MouseButton.PRIMARY == e.getButton() && e.getClickCount() == 1){
+            btnLuu.setVisible(true);
+            btnXoa.setVisible(true);
+            btnMoi.setVisible(true);
+            btnThem.setVisible(false);
             ChiTietChuyenDi ctChuyenDi = tbChiTietChuyenDi.getSelectionModel().getSelectedItem();
             tfMaChuyenDi.setText(String.valueOf(ctChuyenDi.getMaChuyenDi()));
             tpThoiGian.setValue(LocalTime.parse(String.valueOf(ctChuyenDi.getThoiGian())));
             taHoatDong.setText(ctChuyenDi.getHoatDong());
             taGhiChu.setText(ctChuyenDi.getGhiChu());
+            
         }
+    }
+
+    @FXML
+    private void btnThemClick(ActionEvent event) throws SQLException {
+          if(addCTChuyenDi()==true)
+                lbThongBao.setText("Thêm thành công!");
+            else
+                lbThongBao.setText("Thêm thất bại!");
+        initData(tfMaChuyenDi.getText());
     }
 
     

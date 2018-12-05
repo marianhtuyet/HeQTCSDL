@@ -64,9 +64,10 @@
             <JFXTextField fx:id="tfCMND" layoutX="106.0" layoutY="291.0" prefHeight="25.0" prefWidth="230.0" />
             <JFXComboBox fx:id="cmbLop" layoutX="106.0" layoutY="332.0" prefHeight="25.0" prefWidth="230.0" />
             <JFXButton fx:id="btnMoi" layoutX="61.0" layoutY="432.0" onAction="#btnMoiClick" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Mới" />
-            <JFXButton fx:id="btnLuu" layoutX="150.0" layoutY="432.0" onAction="#btnLuuClick" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Lưu" />
+            <JFXButton fx:id="btnLuu" layoutX="150.0" layoutY="432.0" onAction="#btnLuuClick" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Sửa" />
             <JFXButton fx:id="btnXoa" layoutX="234.0" layoutY="432.0" onAction="#btnXoaClick" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Xóa" />
             <Label fx:id="lbThongBao" alignment="CENTER" layoutX="112.0" layoutY="392.0" prefHeight="17.0" prefWidth="149.0" textFill="#fc0000" />
+            <JFXButton fx:id="btnThem" layoutX="61.0" layoutY="432.0" onAction="#btnThemClick" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Thêm" />
          </children>
       </Pane>
       <Pane layoutX="491.0" layoutY="95.0" prefHeight="50.0" prefWidth="463.0">

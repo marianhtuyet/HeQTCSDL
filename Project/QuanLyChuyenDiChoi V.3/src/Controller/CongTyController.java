@@ -29,6 +29,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import model.ChuyenDiDAO;
 import model.CongTyDAO;
 import model.CongTyDuLich;
 import model.DBConnect;
@@ -77,6 +78,8 @@ public class CongTyController implements Initializable {
     private JFXTextField tfMaCongTy;
     @FXML
     private JFXTextField tfTenCongTy;
+    @FXML
+    private JFXButton btnThem;
 
     /**
      * Initializes the controller class.
@@ -86,6 +89,9 @@ public class CongTyController implements Initializable {
         try {
             // TODO
             LoadTable();
+            btnMoi.setVisible(false);
+            btnLuu.setVisible(false);
+            btnXoa.setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(CongTyController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -153,6 +159,15 @@ public class CongTyController implements Initializable {
             alert.close();
         }
     }
+      public boolean updateCongTy() throws SQLException {
+        congTyDAO = new CongTyDAO();
+        String maCongTy = tfMaCongTy.getText();
+        String tenCongTy = tfTenCongTy.getText();
+        String diaChi = tfDiaChi.getText();
+        String SDT = tfSDT.getText();
+
+        return congTyDAO.suaCongTy(maCongTy, tenCongTy, diaChi, SDT);
+    }
      public void searchCongTy() throws SQLException{
         //load combobox lop hoc, nam hoc, 
         congTyDAO = new CongTyDAO();
@@ -168,18 +183,21 @@ public class CongTyController implements Initializable {
         tfTenCongTy.clear();
         tfDiaChi.clear();
         tfSDT.clear();
+        btnMoi.setVisible(false);
+        btnThem.setVisible(true);
+        btnXoa.setVisible(false);
+        btnLuu.setVisible(false);
+        lbThongBao.setText("");
         LoadTable();
     }
 
     @FXML
     private void btnLuuClick(ActionEvent event) throws SQLException {
-        if (tfMaCongTy.getText().isEmpty()) {
-            if (addCongTy()== true) {
-                lbThongBao.setText("Thêm thành công!");
+        if (updateCongTy()== true) {
+                lbThongBao.setText("Cập nhật thành công!");
             } else {
-                lbThongBao.setText("Thêm thất bại!");
+                lbThongBao.setText("Cập nhật thất bại!");
             }
-        }
         LoadTable();
     }
 //    public  boolean xoaCongTy(String maCongTy) throws SQLException{
@@ -220,6 +238,10 @@ public class CongTyController implements Initializable {
     @FXML
     private void tbCongTyClick(MouseEvent e) {
         if (MouseButton.PRIMARY == e.getButton() && e.getClickCount() == 1) {
+            btnLuu.setVisible(true);
+            btnXoa.setVisible(true);
+            btnMoi.setVisible(true);
+            btnThem.setVisible(false);
             CongTyDuLich congTy = tbCongTy.getSelectionModel().getSelectedItem();
             tfMaCongTy.setText(String.valueOf(congTy.getMaCongTy()));
             tfTenCongTy.setText(String.valueOf(congTy.getTenCongTy()));
@@ -227,6 +249,18 @@ public class CongTyController implements Initializable {
             tfSDT.setText(String.valueOf(congTy.getSDT()));   
             
         }
+    }
+
+    @FXML
+    private void btnThemClick(ActionEvent event) throws SQLException {
+        
+            if (addCongTy()== true) {
+                lbThongBao.setText("Thêm thành công!");
+            } else {
+                lbThongBao.setText("Thêm thất bại!");
+            }
+        
+        LoadTable();
     }
     
 }

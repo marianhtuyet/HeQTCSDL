@@ -84,9 +84,10 @@
             <JFXDatePicker fx:id="dpNgayKy" layoutX="115.0" layoutY="121.0" prefHeight="25.0" prefWidth="149.0" />
             <JFXTextField fx:id="tfTriGia1" layoutX="114.0" layoutY="157.0" prefHeight="25.0" prefWidth="150.0" />
             <JFXButton fx:id="btnMoi1" layoutX="400.0" layoutY="42.0" onAction="#btnMoi1Click" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Mới" />
-            <JFXButton fx:id="btnLuu1" layoutX="400.0" layoutY="92.0" onAction="#btnLuu1Click" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Lưu " />
+            <JFXButton fx:id="btnLuu1" layoutX="400.0" layoutY="92.0" onAction="#btnLuu1Click" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Sửa" />
             <JFXButton fx:id="btnXoa1" layoutX="400.0" layoutY="141.0" onAction="#btnXoa1Click" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Xóa" />
             <Label fx:id="lbThongBaoHD" alignment="CENTER" layoutX="180.0" layoutY="6.0" prefHeight="17.0" prefWidth="187.0" textFill="RED" />
+            <JFXButton fx:id="btnThem1" layoutX="400.0" layoutY="43.0" onAction="#btnThemClick1" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Thêm" />
          </children>
       </Pane>
       <Label layoutX="585.0" layoutY="134.0" text="* Thông tin thanh toán" textFill="RED">
@@ -129,13 +130,14 @@
                </font>
             </Label>
             <JFXTextField fx:id="tfMaHopDong2" editable="false" layoutX="126.0" layoutY="23.0" prefHeight="25.0" prefWidth="150.0" />
-            <JFXTextField fx:id="tfLanThanhToan" layoutX="125.0" layoutY="72.0" prefHeight="25.0" prefWidth="150.0" />
+            <JFXTextField fx:id="tfLanThanhToan" editable="false" layoutX="125.0" layoutY="72.0" prefHeight="25.0" prefWidth="150.0" />
             <JFXDatePicker fx:id="dpNgayThanhToan" layoutX="126.0" layoutY="115.0" prefHeight="25.0" prefWidth="149.0" />
             <JFXTextField fx:id="tfTriGia2" layoutX="126.0" layoutY="154.0" prefHeight="25.0" prefWidth="150.0" />
             <JFXButton fx:id="btnMoi2" layoutX="384.0" layoutY="44.0" onAction="#btnMoi2Click" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Mới" />
-            <JFXButton fx:id="btnLuu2" layoutX="384.0" layoutY="94.0" onAction="#btnLuu2Click" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Lưu " />
+            <JFXButton fx:id="btnLuu2" layoutX="384.0" layoutY="94.0" onAction="#btnLuu2Click" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Sửa" />
             <JFXButton fx:id="btnXoa2" layoutX="384.0" layoutY="143.0" onAction="#btnXoa2Click" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Xóa" />
             <Label fx:id="lbThongBaoTT" alignment="CENTER" layoutX="160.0" layoutY="6.0" prefHeight="17.0" prefWidth="223.0" textFill="RED" />
+            <JFXButton fx:id="btnThem2" layoutX="384.0" layoutY="44.0" onAction="#btnThem2Click" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Thêm" />
          </children>
       </Pane>
       <Separator layoutX="506.0" layoutY="144.0" orientation="VERTICAL" prefHeight="445.0" prefWidth="30.0" />

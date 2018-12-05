@@ -109,7 +109,7 @@ public class CongTyDAO {
     }
     public  boolean suaCongTy(String maCongTy, String tenCongTy,  String diaChi, String SDT) throws SQLException{
         String sql ="UPDATE dbo.CongTyDuLich SET TenCongTy = N'"+tenCongTy+"',DiaChi = N'"
-                +diaChi+"', SDT = N'"+SDT+"',  WHERE MaCongTy= "+maCongTy+"";
+                +diaChi+"', SDT = N'"+SDT+"'  WHERE MaCongTy= N'"+maCongTy+"'";
         System.out.println(sql);
         int row = DBConnect.dbExcuteQuery(sql);
         if(row>0)

@@ -37,12 +37,13 @@
             </Label>
             <JFXTextField fx:id="tfMaChuyenDi" editable="false" layoutX="106.0" layoutY="98.0" prefHeight="25.0" prefWidth="230.0" AnchorPane.leftAnchor="106.0" AnchorPane.rightAnchor="45.0" />
             <JFXButton fx:id="btnMoi" layoutX="72.0" layoutY="442.0" onAction="#btnMoiClick" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Mới" />
-            <JFXButton fx:id="btnLuu" layoutX="154.0" layoutY="442.0" onAction="#btnLuuClick" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Lưu" />
+            <JFXButton fx:id="btnLuu" layoutX="154.0" layoutY="442.0" onAction="#btnLuuClick" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Sửa" />
             <JFXButton fx:id="btnXoa" layoutX="238.0" layoutY="442.0" onAction="#btnXoaClick" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Xóa" />
             <JFXTimePicker fx:id="tpThoiGian" layoutX="105.0" layoutY="152.0" prefHeight="25.0" prefWidth="230.0" />
             <JFXTextArea fx:id="taHoatDong" layoutX="105.0" layoutY="211.0" prefHeight="73.0" prefWidth="230.0" />
             <JFXTextArea fx:id="taGhiChu" layoutX="105.0" layoutY="314.0" prefHeight="73.0" prefWidth="230.0" />
             <Label fx:id="lbThongBao" alignment="CENTER" layoutX="127.0" layoutY="410.0" prefHeight="17.0" prefWidth="153.0" textFill="#ff0b00" />
+            <JFXButton fx:id="btnThem" layoutX="72.0" layoutY="442.0" onAction="#btnThemClick" prefHeight="34.0" prefWidth="66.0" styleClass="btnNomal" stylesheets="@application.css" text="Thêm" />
          </children>
       </AnchorPane>
       <Label alignment="CENTER" prefHeight="60.0" prefWidth="1033.0" text="CHI TIẾT CHUYẾN ĐI" textFill="#3a148f">

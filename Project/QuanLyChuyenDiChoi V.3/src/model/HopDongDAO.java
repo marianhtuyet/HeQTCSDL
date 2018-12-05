@@ -99,6 +99,28 @@ public class HopDongDAO {
         }
         return max;
     }
+     public int MaxLanThanhToan(String maHopDong){
+        String sql = "SELECT MAX(LanThanhToan) as maxLTT  FROM dbo.ThongTinThanhToan WHERE MaHopDong = N'"+maHopDong+"'";
+        ResultSet rs = null;
+        int max=0;
+    
+        try {
+            rs=DBConnect.dbExcute(sql);
+                while (rs.next()){
+                    max=rs.getInt("maxLTT");
+                    if(String.valueOf(max)==null)
+                    {
+                        max=0;
+                    }
+    
+                    System.out.println(max);
+                }
+            } 
+        catch (SQLException ex) {
+            Logger.getLogger(ChuyenDiDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return max;
+    }
       public  boolean SuaHopDong(String maHopDong, String maChuyenDi, String maCongTy, float triGia,Date ngayKy) throws SQLException{
         String sql ="UPDATE dbo.HopDong SET MaChuyenDi = N'"+maChuyenDi+"',MaCongTy = N'"+maCongTy+"', TriGia ="+triGia+", NgayKy = '"
                 +ngayKy+"' WHERE MaHopDong=N'"+maHopDong+"'";
@@ -166,5 +188,16 @@ public class HopDongDAO {
             return true;
         else
             return false;       
+    }
+      public  boolean suaThanhToan(String maHopDong, int lanThanhToan, Date ngayThanhToan, float soTien) throws SQLException{
+        String sql ="UPDATE dbo.ThongTinThanhToan SET NgayThanhToan = '"+ngayThanhToan+"', SoTien ="+soTien+""
+                + " WHERE MaHopDong = N'"+maHopDong+"' AND LanThanhToan ="+lanThanhToan+"";
+        System.out.println(sql);
+        int row = DBConnect.dbExcuteQuery(sql);
+        if(row>0)
+            return true;
+        else
+            return false;
+        
     }
 }
