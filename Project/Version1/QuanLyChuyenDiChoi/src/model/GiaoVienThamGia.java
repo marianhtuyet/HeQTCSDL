@@ -13,6 +13,25 @@ public class GiaoVienThamGia {
     private int MaGV;
     private String TenGV;
     private boolean ThamGia;
+    private String MaLop;
+
+    public void setMaLop(String MaLop) {
+        this.MaLop = MaLop;
+    }
+
+    public void setMaChuyenDi(String MaChuyenDi) {
+        this.MaChuyenDi = MaChuyenDi;
+    }
+
+    public String getMaLop() {
+        return MaLop;
+    }
+
+    public String getMaChuyenDi() {
+        return MaChuyenDi;
+    }
+    private String MaChuyenDi ;
+            
 
     public int getMaGV() {
         return MaGV;
