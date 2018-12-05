@@ -13,6 +13,13 @@
     -fx-font-size: 50px;
     -fx-fill: white;
 }
+
+.glyph-icon-2{
+     -fx-font-family: "Material Design Icons";
+    -fx-font-size: 50px;
+    -fx-fill: black;
+}
+
 .login{
     -fx-background-image: url("../image/login.jpg");
     -fx-background-size: 100% 100%; 

@@ -45,6 +45,12 @@ public class MainController implements Initializable {
     private JFXNodesList NodeList;
     @FXML
     private AnchorPane rootPane;
+    @FXML
+    private JFXButton btnChuyenDi;
+    
+    public MainController() {
+        mainController = this;
+    }
 
     public static MainController getMainController() {
         return mainController;
@@ -58,7 +64,7 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         createNhanSu();
-        
+
         // TODO
     }
 
@@ -202,6 +208,16 @@ public class MainController implements Initializable {
 
     public void LoadGiaoVien(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/quanlychuyendichoi/GiaoVien.fxml"));
+        rootPane.getChildren().setAll(pane);
+        GeneralFuntion.FitChildContent(pane);
+    }
+
+    @FXML
+    private void btnChuyenDiClick(ActionEvent event) throws IOException {
+        LoadChuyenDi(event);
+    }
+      public  void LoadChuyenDi(ActionEvent event) throws  IOException{
+          AnchorPane pane = FXMLLoader.load(getClass().getResource("/quanlychuyendichoi/ChuyenDi.fxml"));
         rootPane.getChildren().setAll(pane);
         GeneralFuntion.FitChildContent(pane);
     }

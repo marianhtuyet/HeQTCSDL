@@ -91,8 +91,8 @@ public class LoginController implements Initializable {
     @FXML
     private void btnLoginClick(ActionEvent event) throws IOException {
         User user = new User();
-        user.setEmail(tfUsername.getText());
-        user.setPassword(tfPassword.getText());
+        user.setEmail(tfUsernameDN.getText());
+        user.setPassword(tfPasswordDN.getText());
         int check = CheckUser(user, listUser);
         if (check == 0) {
             Alert alert = new Alert(AlertType.INFORMATION);
