@@ -44,14 +44,14 @@ CREATE TABLE GiaoVien(
 	DiaChi NVARCHAR(50),
 	SDT NVARCHAR(11),
 	CMND NVARCHAR(12),
-	MaLop NVARCHAR(6) FOREIGN KEY REFERENCES dbo.LopHoc(MaLop)
+	
 )
 
 
 CREATE TABLE CongTyDuLich(
 	MaCongTy NVARCHAR(6) PRIMARY KEY,
 	TenCongTy NVARCHAR(50) NOT NULL,
-	DiaChi TEXT,
+	DiaChi NVARCHAR(255),
 	SDT NVARCHAR(11)
 )
 
@@ -60,7 +60,7 @@ CREATE TABLE DiaDiem
 -- dia diem 
 	MaDiaDiem NVARCHAR(6) PRIMARY KEY,
 	TenDiaDiem NVARCHAR(50),
-	DiaChi TEXT,
+	DiaChi  NVARCHAR(255),
 )
 
 CREATE TABLE ChuyenDi
@@ -68,21 +68,20 @@ CREATE TABLE ChuyenDi
 	MaChuyenDi  NVARCHAR(6) PRIMARY KEY,
 	MaCongTyDuLich NVARCHAR(6) FOREIGN KEY REFERENCES dbo.CongTyDuLich(MaCongTy),
 	MaDiaDiem NVARCHAR(6) FOREIGN KEY REFERENCES dbo.DiaDiem(MaDiaDiem),
-	GioKhoiHanh TIME,
-	GioKetThuc TIME,
+	NgaKhoiHanh DATE
 )
 
 CREATE TABLE ChiTietChuyenDi(
 	MaChuyenDi NVARCHAR(6) FOREIGN KEY REFERENCES dbo.ChuyenDi(MaChuyenDi),
 	ThoiGian time(5),
 	HoatDong nvarchar(255),
-	GhiChu TEXT
+	GhiChu  NVARCHAR(255)
 )
 
 
 CREATE TABLE ChiPhi
 (
-	MaDiaDiem NVARCHAR(6) FOREIGN KEY REFERENCES dbo.DiaDiem(MaDiaDiem),
+	
 	MaChuyenDi NVARCHAR(6) FOREIGN KEY REFERENCES dbo.ChuyenDi(MaChuyenDi),
 	VeCong FLOAT,
 	TienXe FLOAT,
@@ -92,7 +91,7 @@ CREATE TABLE ChiPhi
 	TienAnXe FLOAT,
 	LinhTinh float,
 	GhiChu TEXT,
-	CONSTRAINT pk_ChiPhi PRIMARY KEY (MaDiaDiem,MaChuyenDi)
+	CONSTRAINT pk_ChiPhi PRIMARY KEY (MaChuyenDi)
 )
 
 CREATE TABLE HopDong
