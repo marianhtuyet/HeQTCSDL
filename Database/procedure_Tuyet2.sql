@@ -136,8 +136,8 @@ AS
 
 	END
 
-
-	CREATE PROC INSERTHocSinh @TenHS NVARCHAR(50), @NgaySinh SMALLDATETIME, @DiaChi NVARCHAR(50), @TenCha NVARCHAR(50), 
+	-- proc chính
+	CREATE PROC InsertHocSinh @TenHS NVARCHAR(50), @NgaySinh SMALLDATETIME, @DiaChi NVARCHAR(50), @TenCha NVARCHAR(50), 
 			@TenMe NVARCHAR(50), @TenNguoiGiamHo NVARCHAR(50), @SDT NVARCHAR(10), @MaLop NVARCHAR(6), @MaNH INT
 AS
 	BEGIN
@@ -152,7 +152,93 @@ AS
 		IF(@temp != 0)
 			PRINT 'Hoc Sinh bi trung'		
 		ELSE
+
 			INSERT INTO dbo.HocSinh( MaHS , TenHS , NgaySinh ,DiaChi , TenCha , TenMe , TenNguoiGiamHo , SDT , TrangThai)
 			VALUES  (@MaHS,@TenHS, @NgaySinh, @DiaChi, @TenCha, @TenMe , @TenNguoiGiamHo, @SDT, 1)
+			INSERT INTO dbo.CTLop VALUES  ( @MaHS, @MaLop, @MaNH)
 
+	END
+
+
+--proc them user theo thu tu tang dan
+
+CREATE PROC TimMaUser @MaUser INT OUT
+AS
+	BEGIN
+		DECLARE @max INT, @i INT
+		SELECT @max = MAX(ID) FROM dbo.[User]
+		SET @i = 1;
+		SET @MaUser = 0;
+		WHILE @i < @max
+			BEGIN
+				IF(@i = SOME(SELECT ID FROM dbo.[User]))
+					SET @i +=1
+				ELSE
+					BEGIN
+                		SET @MaUser = @i
+						BREAK
+					END
+			END 
+		IF(@MaUser = 0)
+		BEGIN
+			SET @MaUser = @max + 1
+
+		END
+
+	END
+
+CREATE PROC InsertUser @Email NVARCHAR(50), @Pass NVARCHAR(50)
+AS
+	BEGIN
+		DECLARE @MaUser INT, @temp INT
+		EXEC TimMaUser @MaUser OUT
+		IF( @Email = SOME(SELECT Email FROM dbo.[User]))
+			SET @temp = 1
+		IF(@temp != 0)
+			PRINT 'User bi trung'		
+		ELSE
+
+			INSERT INTO dbo.[User]
+			VALUES  (@MaUser, @Email, @Pass, 1)
+
+	END
+
+
+
+---procedure chon hoc sinh theo lop, theo ten
+CREATE PROC SelectHocSinh @MaNH INT, @MaLop NVARCHAR(6)
+AS
+	BEGIN
+		IF(@@ERROR = 0 AND @@ROWCOUNT = 0)
+			SELECT * FROM dbo.CTLop INNER JOIN dbo.HocSinh ON HocSinh.MaHS = CTLop.MaHS
+		WHERE dbo.CTLop.MaLop = @MaLop AND dbo.CTLop.MaNH = @MaNH AND dbo.HocSinh.TrangThai = 'true'
+		ELSE
+        
+			PRINT 'Khong the hien thi danh sach hoc sinh'
+	END
+
+
+-- chon lop hoc
+
+
+CREATE PROC SelectLopHoc  
+AS
+	BEGIN
+		IF(@@ERROR = 0 AND @@ROWCOUNT = 0)
+			SELECT * FROM dbo.LopHoc
+		ELSE
+        
+			PRINT 'Khong the hien thi danh sach hoc sinh'
+	END
+	
+
+--Select nam hoc
+
+CREATE PROC SelectNamHoc  
+AS
+	BEGIN
+		IF(@@ERROR = 0 AND @@ROWCOUNT = 0)
+			SELECT * FROM dbo.NamHoc
+		ELSE
+			PRINT 'Khong the hien thi danh sach hoc sinh'
 	END
