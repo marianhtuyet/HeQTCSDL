@@ -68,8 +68,9 @@ CREATE TABLE ChuyenDi
 	MaChuyenDi  NVARCHAR(6) PRIMARY KEY not null,
 	MaCongTyDuLich NVARCHAR(6) FOREIGN KEY REFERENCES dbo.CongTyDuLich(MaCongTy),
 	MaDiaDiem NVARCHAR(6) FOREIGN KEY REFERENCES dbo.DiaDiem(MaDiaDiem),
-	NgaKhoiHanh DATE
+	NgayKhoiHanh DATE
 )
+
 
 CREATE TABLE ChiTietChuyenDi(
 	MaChuyenDi NVARCHAR(6) FOREIGN KEY REFERENCES dbo.ChuyenDi(MaChuyenDi) not null,
