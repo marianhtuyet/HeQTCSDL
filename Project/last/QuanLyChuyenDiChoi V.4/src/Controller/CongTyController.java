@@ -104,14 +104,12 @@ public class CongTyController implements Initializable {
     }
     public boolean addCongTy() throws SQLException {
         congTyDAO = new CongTyDAO();
-        int id;
-        id = congTyDAO.MaxMaCongTy()+ 1;
-        String s = String.valueOf(id);
+      
         String tenCongTy = tfTenCongTy.getText();
         String diaChi = tfDiaChi.getText();
         String SDT = tfSDT.getText();
  
-        return congTyDAO.ThemCongTy(s, tenCongTy, diaChi, SDT);
+        return congTyDAO.ThemCongTy( tenCongTy, diaChi, SDT);
     }
     public void setCellValueFactory() {
         colMaCongTy.setCellValueFactory(new PropertyValueFactory<CongTyDuLich, String>("maCongTy"));

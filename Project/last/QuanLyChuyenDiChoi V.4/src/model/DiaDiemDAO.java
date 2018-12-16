@@ -47,7 +47,7 @@ public class DiaDiemDAO {
     }
     
     public void Them(DiaDiem dd) throws SQLException{
-        String sql= "insert into DiaDiem values ('DD"+dd.getMaDiaDiem()+"',N'"+dd.getTenDiaDiem() + "',N'"+dd.getDiaChi() + "')";
+        String sql= "insert into DiaDiem (TenDiaDiem, DiaChi) values (N'"+dd.getTenDiaDiem() + "',N'"+dd.getDiaChi() + "')";
         System.out.println(sql);
         try {
             int stmt = DBConnect.dbExcuteQuery(sql);

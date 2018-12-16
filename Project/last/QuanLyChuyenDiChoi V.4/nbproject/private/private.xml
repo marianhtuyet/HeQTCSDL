@@ -3,19 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/AnhTuyet/BaiHoc/Hk1-2018-2019/QuanLyChuyenDiChoi%20V.4/src/Controller/GiaoVienController.java</file>
-            <file>file:/D:/AnhTuyet/BaiHoc/Hk1-2018-2019/QuanLyChuyenDiChoi%20V.4/src/Controller/ThamGiaController.java</file>
-            <file>file:/D:/AnhTuyet/BaiHoc/Hk1-2018-2019/QuanLyChuyenDiChoi%20V.4/src/model/ChiPhiDAO.java</file>
-            <file>file:/D:/AnhTuyet/BaiHoc/Hk1-2018-2019/QuanLyChuyenDiChoi%20V.4/src/model/LopHoc.java</file>
-            <file>file:/D:/AnhTuyet/BaiHoc/Hk1-2018-2019/QuanLyChuyenDiChoi%20V.4/src/Controller/CongTyController.java</file>
-            <file>file:/D:/AnhTuyet/BaiHoc/Hk1-2018-2019/QuanLyChuyenDiChoi%20V.4/src/Controller/ChiPhiController.java</file>
-            <file>file:/D:/AnhTuyet/BaiHoc/Hk1-2018-2019/QuanLyChuyenDiChoi%20V.4/src/Controller/ChiTietChuyenDiController.java</file>
-            <file>file:/D:/AnhTuyet/BaiHoc/Hk1-2018-2019/QuanLyChuyenDiChoi%20V.4/src/Controller/HopDongController.java</file>
-            <file>file:/D:/AnhTuyet/BaiHoc/Hk1-2018-2019/QuanLyChuyenDiChoi%20V.4/src/Controller/DiaDiemController.java</file>
-            <file>file:/D:/AnhTuyet/BaiHoc/Hk1-2018-2019/QuanLyChuyenDiChoi%20V.4/src/model/GiaoVienDAO.java</file>
-            <file>file:/D:/AnhTuyet/BaiHoc/Hk1-2018-2019/QuanLyChuyenDiChoi%20V.4/src/Controller/MainController.java</file>
-            <file>file:/D:/AnhTuyet/BaiHoc/Hk1-2018-2019/QuanLyChuyenDiChoi%20V.4/src/model/ThamGiaDAO.java</file>
-            <file>file:/D:/AnhTuyet/BaiHoc/Hk1-2018-2019/QuanLyChuyenDiChoi%20V.4/src/model/DiaDiem.java</file>
+            <file>file:/C:/Users/Scoobydo/Documents/GitHub/HeQTCSDL/Project/last/QuanLyChuyenDiChoi%20V.4/src/model/StudentDAO.java</file>
+            <file>file:/C:/Users/Scoobydo/Documents/GitHub/HeQTCSDL/Project/last/QuanLyChuyenDiChoi%20V.4/src/model/GiaoVienDAO.java</file>
+            <file>file:/C:/Users/Scoobydo/Documents/GitHub/HeQTCSDL/Project/last/QuanLyChuyenDiChoi%20V.4/src/Controller/GiaoVienController.java</file>
+            <file>file:/C:/Users/Scoobydo/Documents/GitHub/HeQTCSDL/Project/last/QuanLyChuyenDiChoi%20V.4/src/Controller/HocSinhController.java</file>
         </group>
     </open-files>
 </project-private>

@@ -218,15 +218,13 @@ public class HopDongController implements Initializable {
 
     public boolean addHopDong() throws SQLException {
         hopDongDAO = new HopDongDAO();
-        int id;
-        id = hopDongDAO.MaxMaHopDong() + 1;
-        String s = String.valueOf(id);
+        
         String maChuyenDi = tfMaChuyenDi.getText();
         String maCongTy = cmbTenCongTy.getValue().getMaCongTy();
         Date ngayKy = Date.valueOf(dpNgayKy.getValue());
         float triGia = Float.parseFloat(tfTriGia1.getText());
 
-        return hopDongDAO.themHopDong(s, maChuyenDi, maCongTy, triGia, ngayKy);
+        return hopDongDAO.themHopDong( maChuyenDi, maCongTy, triGia, ngayKy);
     }
 
     public boolean addThanhToan() throws SQLException {
@@ -313,14 +311,14 @@ public class HopDongController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
 
         Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-        alert1.setTitle("ThĂ´ng bĂ¡o");
+        alert1.setTitle("Thông báo");
         alert1.setHeaderText("");
         if (result.get() == buttontypeYes) {
             if (deleteThanhToan() == true) {
-                alert1.setContentText("XĂ³a thĂ nh cĂ´ng");
+                alert1.setContentText("Xóa thành công!");
                 alert1.show();
             } else {
-                alert1.setContentText("XĂ³a that bai");
+                alert1.setContentText("Xóa thất bại");
                 alert1.show();
             }
 
@@ -342,8 +340,10 @@ public class HopDongController implements Initializable {
             alert1.setHeaderText("Không tìm thấy");
             alert1.show();
         }
+        else{
         setCellValueFactoryHopDong();
         tbHopDong.setItems(listHopDong);
+        }
 
     }
 

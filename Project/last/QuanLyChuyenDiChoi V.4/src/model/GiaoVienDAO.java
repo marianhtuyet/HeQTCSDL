@@ -74,9 +74,9 @@ public class GiaoVienDAO {
         return list;
     }
 
-    public boolean ThemGiaoVien(String maGiaoVien, String tenGiaoVien, Date ngaySinh, String diaChi, String SDT, String CMND, String maLop) throws SQLException {
-        String sql = "INSERT INTO dbo.GiaoVien( MaGV ,TenGV ,NgaySinh ,DiaChi,SDT,CMND,MaLop) "
-                + "VALUES  (" + maGiaoVien + " , N'" + tenGiaoVien + "' , '" + ngaySinh + "' , N'" + diaChi + "' , N'" + SDT + "' , N'" + CMND + "' , N'" + maLop + "' )";
+    public boolean ThemGiaoVien(String tenGiaoVien, Date ngaySinh, String diaChi, String SDT, String CMND, String maLop) throws SQLException {
+        String sql = "INSERT INTO dbo.GiaoVien(  TenGV ,NgaySinh ,DiaChi,SDT,CMND,MaLop) "
+                + "VALUES  ( N'" + tenGiaoVien + "' , '" + ngaySinh + "' , N'" + diaChi + "' , N'" + SDT + "' , N'" + CMND + "' , N'" + maLop + "' )";
         System.out.println(sql);
         int row = DBConnect.dbExcuteQuery(sql);
         if (row > 0) {

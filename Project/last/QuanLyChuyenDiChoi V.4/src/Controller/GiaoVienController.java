@@ -148,9 +148,7 @@ public class GiaoVienController implements Initializable {
     }
     public boolean addGiaoVien() throws SQLException{
         giaoVienDAO = new GiaoVienDAO();
-        int id;
-        id=giaoVienDAO.MaxMaGiaoVien()+1;
-        String s=String.valueOf(id);
+       
         String tenGiaoVien = tfTenGiaoVien.getText();
         Date ngaySinh=Date.valueOf(dpNgaySinh.getValue());
         String diaChi= tfDiaChi.getText();
@@ -158,7 +156,7 @@ public class GiaoVienController implements Initializable {
         String CMND = tfCMND.getText();
         String maLop=cmbLop.getValue().getStrMaLop();
 
-        return giaoVienDAO.ThemGiaoVien(s, tenGiaoVien, ngaySinh, diaChi, SDT, CMND, maLop);
+        return giaoVienDAO.ThemGiaoVien( tenGiaoVien, ngaySinh, diaChi, SDT, CMND, maLop);
     }
     public boolean updateGiaoVien() throws SQLException{
         giaoVienDAO = new GiaoVienDAO();

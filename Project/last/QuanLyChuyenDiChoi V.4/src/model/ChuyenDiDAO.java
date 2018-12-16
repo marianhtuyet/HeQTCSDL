@@ -42,9 +42,9 @@ public class ChuyenDiDAO {
 
         return list;
     }
-    public  boolean ThemChuyenDi(String maChuyenDi, String maCongTy, String maDiaDiem, Date ngayKhoiHanh) throws SQLException{
-        String sql ="INSERT INTO dbo.ChuyenDi( MaChuyenDi ,MaCongTyDuLich ,MaDiaDiem ,NgayKhoiHanh) " +
-                    "VALUES  ( N'CD"+maChuyenDi+ "' , N'"+maCongTy+"' , N'"+maDiaDiem+"' , '"+ngayKhoiHanh+"' +)\n";
+    public  boolean ThemChuyenDi( String maCongTy, String maDiaDiem, Date ngayKhoiHanh) throws SQLException{
+        String sql ="INSERT INTO dbo.ChuyenDi(  MaCongTyDuLich ,MaDiaDiem ,NgayKhoiHanh) " +
+                    "VALUES  ( N'"+maCongTy+"' , N'"+maDiaDiem+"' , '"+ngayKhoiHanh+"')\n";
        
         System.out.println(sql);
         int row = DBConnect.dbExcuteQuery(sql);

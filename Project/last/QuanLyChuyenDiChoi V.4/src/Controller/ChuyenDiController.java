@@ -176,13 +176,11 @@ public class ChuyenDiController implements Initializable {
 
     public boolean addChuyenDi() throws SQLException {
         chuyenDiDAO = new ChuyenDiDAO();
-        int id;
-        id = chuyenDiDAO.MaxMaChuyenDi() + 1;
-        String s = String.valueOf(id);
+        
         String maCongTy = cmbTenCongTy.getValue().getMaCongTy();
         String maDiaDiem = cmbTenDiaDiem.getValue().getMaDiaDiem();
         Date ngayKhoiHanh = Date.valueOf(dpNgayKhoiHanh.getValue());
-        return chuyenDiDAO.ThemChuyenDi(s, maCongTy, maDiaDiem, ngayKhoiHanh);
+        return chuyenDiDAO.ThemChuyenDi( maCongTy, maDiaDiem, ngayKhoiHanh);
     }
 
     public boolean UpdateChuyenDi() throws SQLException {
@@ -246,8 +244,10 @@ public class ChuyenDiController implements Initializable {
             alert1.setHeaderText("Không tìm thấy");
             alert1.show();
         }
+        else{
         setCellValueFactory();
         tbChuyenDi.setItems(listChuyenDi);
+        }
 
     }
 
@@ -260,6 +260,7 @@ public class ChuyenDiController implements Initializable {
         btnLuu.setVisible(false);
         btnChiTiet.setVisible(false);
         btnChiPhi.setVisible(false);
+        btnThamGiia.setVisible(false);
         lbKetQua.setText("");
         LoadTable();
 
@@ -356,12 +357,15 @@ public class ChuyenDiController implements Initializable {
 
     @FXML
     private void btnThemClick(ActionEvent event) throws SQLException {
-
-        if (addChuyenDi() == true) {
-            lbKetQua.setText("Thêm thành công!");
-        } else {
-            lbKetQua.setText("Thêm thất bại!");
-        }
+        if(cmbTenCongTy.getValue()==null||cmbTenDiaDiem.getValue()==null||dpNgayKhoiHanh.getValue()==null)
+            lbKetQua.setText("Vui lòng nhập đầy đủ thông tin!");
+        else{
+            if (addChuyenDi() == true) {
+                lbKetQua.setText("Thêm thành công!");
+            } else {
+                lbKetQua.setText("Thêm thất bại!");
+            }
+            }
         LoadTable();
     }
 

@@ -158,11 +158,9 @@ public class DiaDiemController implements Initializable {
             alert1.show();
         }
         else {
-        int id;
-        id=max+1;
-        String s=String.valueOf(id);
+        
         DiaDiem dd = new DiaDiem();
-        dd.setMaDiaDiem(s);
+      
         dd.setTenDiaDiem(tfTenDiaDiem.getText());
         dd.setDiaChi(tfDiaChi.getText());
         btnAdd.setVisible(true);

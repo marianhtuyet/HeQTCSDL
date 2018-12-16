@@ -66,9 +66,9 @@ public class HopDongDAO {
 
         return list;
     }
-     public  boolean themHopDong(String maHopDong, String maChuyenDi, String maCongTy, float triGia,Date ngayKy) throws SQLException{
-        String sql ="INSERT INTO dbo.HopDong( MaHopDong ,MaChuyenDi ,MaCongTy ,TriGia, TrangThai,NgayKy) " +
-                    "VALUES  ( N'HD"+maHopDong+ "' , N'"+maChuyenDi+"' , N'"+maCongTy+"' , "+triGia+" , N'Chưa thanh toán' , '"+ngayKy+"' )";
+     public  boolean themHopDong( String maChuyenDi, String maCongTy, float triGia,Date ngayKy) throws SQLException{
+        String sql ="INSERT INTO dbo.HopDong( MaChuyenDi ,MaCongTy ,TriGia, TrangThai,NgayKy) " +
+                    "VALUES  (  N'"+maChuyenDi+"' , N'"+maCongTy+"' , "+triGia+" , N'Chưa thanh toán' , '"+ngayKy+"' )";
         System.out.println(sql);
         int row = DBConnect.dbExcuteQuery(sql);
         if(row>0)
