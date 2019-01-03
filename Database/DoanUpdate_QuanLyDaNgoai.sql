@@ -1,5 +1,5 @@
 ﻿----CÁC HÀM TẠO MÃ TỰ TĂNG--------
-alter FUNCTION AUTO_MaChuyenDi()
+CREATE FUNCTION AUTO_MaChuyenDi()
 RETURNS VARCHAR(5)
 AS
 BEGIN
@@ -151,7 +151,8 @@ CREATE TABLE CongTyDuLich(
 	SDT NVARCHAR(11)
 )
 
-CREATE TABLE DiaDiem
+
+create TABLE DiaDiem
 (
 -- dia diem 
 	MaDiaDiem NVARCHAR(6) PRIMARY KEY CONSTRAINT idDiaDiem DEFAULT dbo.AUTO_MaDiaDiem() ,
